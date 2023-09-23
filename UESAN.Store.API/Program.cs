@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using UESAN.Store.CORE.Entities;
 using UESAN.Store.CORE.Interfaces;
 using UESAN.Store.INFRASTRUCTURE.Data;
+using UESAN.Store.INFRASTRUCTURE.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 

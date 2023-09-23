@@ -8,7 +8,7 @@ using UESAN.Store.CORE.Entities;
 using UESAN.Store.CORE.Interfaces;
 using UESAN.Store.INFRASTRUCTURE.Data;
 
-namespace UESAN.Store.CORE.Entities
+namespace UESAN.Store.INFRASTRUCTURE.Repositories
 {
     public class CategoryRepository : ICategoryRepository
     {
