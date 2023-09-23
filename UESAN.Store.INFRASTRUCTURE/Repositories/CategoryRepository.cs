@@ -24,5 +24,19 @@ namespace UESAN.Store.CORE.Entities
             return await _dbContext.Category.ToListAsync();
         }
 
+        public async Task<Category> GetById(int id)
+        {
+            return await _dbContext
+                .Category
+                .Where(x => x.Id == id).FirstOrDefaultAsync();
+        }
+
+        public async Task<bool> Insert(Category category)
+        {
+            await _dbContext.Category.AddAsync(category);
+            var countRows = await _dbContext.SaveChangesAsync();
+            return countRows > 0;
+        }
+
     }
 }
