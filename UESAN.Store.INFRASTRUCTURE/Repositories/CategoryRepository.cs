@@ -38,5 +38,13 @@ namespace UESAN.Store.INFRASTRUCTURE.Repositories
             return countRows > 0;
         }
 
+        public async Task<bool> ExistsDescription(string description)
+        { 
+           return await _dbContext
+                .Category
+                .Where(x=>x.Description == description.Trim()).AnyAsync();
+        
+        }
+
     }
 }
