@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UESAN.Store.INFRASTRUCTURE.Repositories
 {
-    internal class FavoriteRepository
+    public class FavoriteRepository
     {
     }
 }
