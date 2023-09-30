@@ -4,6 +4,7 @@ using UESAN.Store.CORE.Interfaces;
 using UESAN.Store.CORE.Services;
 using UESAN.Store.INFRASTRUCTURE.Data;
 using UESAN.Store.INFRASTRUCTURE.Repositories;
+using UESAN.Store.INFRASTRUCTURE.Shared;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,11 +15,13 @@ builder
     .Services
     .AddDbContext<StoreDbContext>
     (options => options.UseSqlServer(_cnx));
-
+builder.Services.AddSharedInfrastructure(_config);
 builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 builder.Services.AddTransient<ICategoryService, CategoryService>();
 builder.Services.AddTransient<IUsersRepository, UsersRepository>();
 builder.Services.AddTransient<IUsersService, UsersService>();
+
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
