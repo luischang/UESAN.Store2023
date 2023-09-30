@@ -16,7 +16,7 @@ namespace UESAN.Store.API.Controllers
             _usersService = usersService;
         }
 
-        [HttpPost]
+        [HttpPost("SignIn")]
         public async Task<IActionResult> SignIn([FromBody] UsersLoginDTO usersLoginDTO)
         {
             var result = await _usersService.SignIn(usersLoginDTO);
@@ -24,6 +24,16 @@ namespace UESAN.Store.API.Controllers
                 return NotFound();
 
             return Ok(result);
+        }
+
+        [HttpPost("SignUp")]
+        public async Task<IActionResult> SignUp([FromBody] UsersRegisterDTO usersRegisterDTO)
+        {
+            var result = await _usersService.SignUp(usersRegisterDTO);
+            if(!result)
+                return BadRequest();
+            return Ok(result);
+
         }
     }
 }

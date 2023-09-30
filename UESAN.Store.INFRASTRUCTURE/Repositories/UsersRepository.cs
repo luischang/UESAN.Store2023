@@ -25,7 +25,22 @@ namespace UESAN.Store.INFRASTRUCTURE.Repositories
             return result;
         }
 
+        public async Task<bool> SignUp(User user)
+        {
+            await _dbContext.User.AddAsync(user);
+            int rows = await _dbContext.SaveChangesAsync();
+            return rows > 0;
+        }
 
+        public async Task<User> GetById(int id)
+        {
+            return await _dbContext.User.FindAsync(id);
+        }
+
+        public async Task<bool> ExistsEmail(string email)
+        {
+            return await _dbContext.User.Where(x => x.Email == email).AnyAsync();
+        }
 
 
     }
