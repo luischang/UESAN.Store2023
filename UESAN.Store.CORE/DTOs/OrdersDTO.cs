@@ -31,4 +31,17 @@ namespace UESAN.Store.CORE.DTOs
         public IEnumerable<OrderDetailInsertDTO> OrderDetail { get; set; }
 
     }
+
+    public class OrdersHeaderDTO
+    {
+        public int Id { get; set; }
+
+        public DateTime? CreatedAt { get; set; }
+
+        public int? UserId { get; set; }
+
+        public string? Status { get; set; }
+
+        public decimal? TotalAmount { get; set; }
+    }
 }

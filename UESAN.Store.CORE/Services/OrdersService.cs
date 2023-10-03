@@ -22,20 +22,22 @@ namespace UESAN.Store.CORE.Services
             _ordersDetailsRepository = ordersDetailsRepository;
         }
 
-        public async Task<IEnumerable<OrdersDTO>> GetAllByUser(int userId)
+        public async Task<IEnumerable<OrdersHeaderDTO>> GetAllByUser(int userId)
         {
             var orders = await _ordersRepository.GetAllByUser(userId);
             if (!orders.Any())
                 return null;
 
-            var ordesDTO = new List<OrdersDTO>();
+            var ordesDTO = new List<OrdersHeaderDTO>();
             foreach (var order in orders)
             {
-                var orderDTO = new OrdersDTO()
+                var orderDTO = new OrdersHeaderDTO()
                 {
                     Id = order.Id,
                     Status = order.Status,
-                    TotalAmount = order.TotalAmount
+                    TotalAmount = order.TotalAmount,
+                    UserId = userId,
+                    CreatedAt = order.CreatedAt
                 };
                 ordesDTO.Add(orderDTO);
             }
