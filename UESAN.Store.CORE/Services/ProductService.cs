@@ -18,37 +18,45 @@ namespace UESAN.Store.CORE.Services
             _productRepository = productRepository;
         }
 
-        public async Task<IEnumerable<ProductDescriptionDTO>> GetAll()
+        public async Task<IEnumerable<ProductCategoryDTO>> GetAll()
         {
             var products = await _productRepository.GetAll();
-            var productsDTO = new List<ProductDescriptionDTO>();
+            var productsDTO = new List<ProductCategoryDTO>();
 
             foreach (var product in products)
             {
-                var productDTO = new ProductDescriptionDTO();
+                var productDTO = new ProductCategoryDTO();
                 productDTO.Id = product.Id;
                 productDTO.Description = product.Description;
                 productDTO.Stock = product.Stock;
                 productDTO.Price = product.Price;
                 productDTO.Discount = product.Discount;
-                productDTO.CategoryId = product.CategoryId;
+                productDTO.Category = new CategoryDescriptionDTO()
+                {
+                    Id = product.Category.Id,
+                    Description = product.Category.Description
+                };
 
                 productsDTO.Add(productDTO);
             }
             return productsDTO;
         }
 
-        public async Task<ProductDescriptionDTO> GetById(int id)
+        public async Task<ProductCategoryDTO> GetById(int id)
         {
             var product = await _productRepository.GetById(id);
-            var productDTO = new ProductDescriptionDTO()
+            var productDTO = new ProductCategoryDTO()
             {
                 Id = product.Id,
                 Description = product.Description,
                 Stock = product.Stock,
                 Price = product.Price,
                 Discount = product.Discount,
-                CategoryId = product.CategoryId
+                Category = new CategoryDescriptionDTO()
+                {
+                    Id = product.Category.Id,
+                    Description = product.Category.Description
+                }
             };
             return productDTO;
         }

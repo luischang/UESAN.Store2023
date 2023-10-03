@@ -21,14 +21,15 @@ namespace UESAN.Store.INFRASTRUCTURE.Repositories
 
         public async Task<IEnumerable<Product>> GetAll()
         {
-            return await _dbContext.Product.ToListAsync();
+            return await _dbContext.Product.Include("Category").ToListAsync();
         }
 
         public async Task<Product> GetById(int id)
         {
             return await _dbContext
                 .Product
-                .Where(x => x.Id == id).FirstOrDefaultAsync();
+                .Where(x => x.Id == id)
+                .Include("Category").FirstOrDefaultAsync();
         }
 
         public async Task<bool> Insert(Product product)

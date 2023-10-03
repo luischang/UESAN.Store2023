@@ -4,8 +4,8 @@ namespace UESAN.Store.CORE.Interfaces
 {
     public interface IProductService
     {
-        Task<IEnumerable<ProductDescriptionDTO>> GetAll();
-        Task<ProductDescriptionDTO> GetById(int id);
+        Task<IEnumerable<ProductCategoryDTO>> GetAll();
+        Task<ProductCategoryDTO> GetById(int id);
         Task<bool> Insert(ProductInsertDTO productInsert);
     }
 }
