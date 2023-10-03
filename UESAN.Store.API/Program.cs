@@ -20,8 +20,14 @@ builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 builder.Services.AddTransient<ICategoryService, CategoryService>();
 builder.Services.AddTransient<IUsersRepository, UsersRepository>();
 builder.Services.AddTransient<IUsersService, UsersService>();
+
 builder.Services.AddTransient<IProductRepository, ProductRepository>();
 builder.Services.AddTransient<IProductService, ProductService>();
+
+builder.Services.AddTransient<IOrdersRepository, OrdersRepository>();
+builder.Services.AddTransient<IOrdersDetailsRepository, OrdersDetailsRepository>();
+builder.Services.AddTransient<IOrdersService, OrdersService>();
+
 
 
 builder.Services.AddControllers();
