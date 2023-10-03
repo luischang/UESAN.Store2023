@@ -5,6 +5,8 @@ using UESAN.Store.CORE.Interfaces;
 
 namespace UESAN.Store.API.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class OrdersController : ControllerBase
     {
         private readonly IOrdersService _ordersService;
