@@ -30,6 +30,7 @@ namespace UESAN.Store.CORE.Services
                 productDTO.Description = product.Description;
                 productDTO.Stock = product.Stock;
                 productDTO.Price = product.Price;
+                productDTO.ImageUrl = product.ImageUrl;
                 productDTO.Discount = product.Discount;
                 productDTO.Category = new CategoryDescriptionDTO()
                 {

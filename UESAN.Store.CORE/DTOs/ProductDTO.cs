@@ -66,6 +66,7 @@ namespace UESAN.Store.CORE.DTOs
         public decimal? Price { get; set; }
 
         public int? Discount { get; set; }
+        public string? ImageUrl { get; set; }
 
         public CategoryDescriptionDTO Category { get; set; }
     }
