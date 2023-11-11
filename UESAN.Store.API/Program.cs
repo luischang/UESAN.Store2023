@@ -28,6 +28,7 @@ builder.Services.AddTransient<IOrdersRepository, OrdersRepository>();
 builder.Services.AddTransient<IOrdersDetailsRepository, OrdersDetailsRepository>();
 builder.Services.AddTransient<IOrdersService, OrdersService>();
 
+builder.Services.AddHttpClient();
 
 
 builder.Services.AddControllers();
