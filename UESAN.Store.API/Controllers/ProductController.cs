@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using UESAN.Store.CORE.DTOs;
 using UESAN.Store.CORE.Entities;
@@ -9,6 +10,7 @@ namespace UESAN.Store.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[Authorize]
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productService;
@@ -40,6 +42,13 @@ namespace UESAN.Store.API.Controllers
             if (!result)
                 return BadRequest("Ocurrió un error");
 
+            return Ok(result);
+        }
+
+        [HttpGet("GetAllByCategory/{id}")]
+        public async Task<IActionResult> GetAllByCategory(int id)
+        {
+            var result = await _productService.GetAllByCategory(id);
             return Ok(result);
         }
     }

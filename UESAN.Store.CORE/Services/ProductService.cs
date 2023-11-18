@@ -79,5 +79,33 @@ namespace UESAN.Store.CORE.Services
             }
             return false;
         }
+
+        public async Task<IEnumerable<ProductCategoryDTO>> GetAllByCategory(int? categoryId)
+        {
+
+            var products = (categoryId == 0 || categoryId==null) ? 
+                            await _productRepository.GetAll() :
+                            await _productRepository.GetAllByCategory(categoryId);
+            var productsDTO = new List<ProductCategoryDTO>();
+
+            foreach (var product in products)
+            {
+                var productDTO = new ProductCategoryDTO();
+                productDTO.Id = product.Id;
+                productDTO.Description = product.Description;
+                productDTO.Stock = product.Stock;
+                productDTO.Price = product.Price;
+                productDTO.ImageUrl = product.ImageUrl;
+                productDTO.Discount = product.Discount;
+                productDTO.Category = new CategoryDescriptionDTO()
+                {
+                    Id = product.Category.Id,
+                    Description = product.Category.Description
+                };
+
+                productsDTO.Add(productDTO);
+            }
+            return productsDTO;
+        }
     }
 }

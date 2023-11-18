@@ -46,5 +46,12 @@ namespace UESAN.Store.INFRASTRUCTURE.Repositories
                  .Where(x => x.Description == description.Trim()).AnyAsync();
 
         }
+
+        public async Task<IEnumerable<Product>> GetAllByCategory(int? categoryId)
+        {
+            return await _dbContext
+                        .Product.Where(x=>x.CategoryId == categoryId)
+                        .Include("Category").ToListAsync();
+        }
     }
 }

@@ -8,5 +8,6 @@ namespace UESAN.Store.CORE.Interfaces
         Task<Product> GetById(int id);
         Task<bool> Insert(Product product);
         Task<bool> ExistsDescription(string description);
+        Task<IEnumerable<Product>> GetAllByCategory(int? categoryId);
     }
 }
